@@ -1,0 +1,1477 @@
+[gd_scene load_steps=62 format=3 uid="uid://b3iueqnheek7"]
+
+[ext_resource type="Script" uid="uid://csw802whqe37j" path="res://Scripts/Controllers/GameController.gd" id="1_0eh1h"]
+[ext_resource type="Texture2D" uid="uid://qkgrxuj6wye8" path="res://Assets/Sprites/Buildings/Map_nuit.png" id="3_8xcuk"]
+[ext_resource type="Texture2D" uid="uid://q3xdtomg16xl" path="res://Assets/Sprites/UI/flocons.PNG" id="3_htr12"]
+[ext_resource type="Script" uid="uid://b437ffv2g58hx" path="res://Scripts/Utils/CloseButton.gd" id="4_2ao20"]
+[ext_resource type="Texture2D" uid="uid://cnbdeb5qxu7lw" path="res://Assets/Sprites/UI/Mois_Suivant.png" id="4_6athi"]
+[ext_resource type="Texture2D" uid="uid://dgkrojwqs5egn" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="4_msfb6"]
+[ext_resource type="Shader" uid="uid://c4nffjp86nq0v" path="res://Assets/Sprites/dialogues.gdshader" id="4_vtlkr"]
+[ext_resource type="Texture2D" uid="uid://xsxaxofr2hdu" path="res://Assets/Sprites/UI/reparation.jpg" id="5_v8l4f"]
+[ext_resource type="Texture2D" uid="uid://27od0w6gmt24" path="res://Assets/Sprites/UI/detruis.jpg" id="6_v8l4f"]
+[ext_resource type="Texture2D" uid="uid://cfv7afhq5n38w" path="res://Assets/Sprites/UI/warning.webp" id="7_imqa2"]
+[ext_resource type="Texture2D" uid="uid://brv7gurb7pjkx" path="res://Assets/Sprites/UI/Sprite_SettingsBtn.png" id="9_imqa2"]
+[ext_resource type="Texture2D" uid="uid://b4qbg8qr8yew7" path="res://Assets/Sprites/UI/progresse.png" id="10_ppt0p"]
+[ext_resource type="Texture2D" uid="uid://8e32p433eny2" path="res://Assets/Sprites/UI/Mois.png" id="10_rgpdm"]
+[ext_resource type="Texture2D" uid="uid://bm7rxrisnhhcr" path="res://Assets/Sprites/UI/Argent.png" id="11_8xcuk"]
+[ext_resource type="Script" uid="uid://c15vhbcnckso5" path="res://Scripts/Views/SettingsView.gd" id="11_cs073"]
+[ext_resource type="Texture2D" uid="uid://ql83j3al1pup" path="res://Assets/Sprites/UI/bar.png" id="11_dp8ht"]
+[ext_resource type="Texture2D" uid="uid://bvysuc3qhvemd" path="res://Assets/Sprites/UI/Play.png" id="17_8xcuk"]
+[ext_resource type="Texture2D" uid="uid://vgebmsy4xhbh" path="res://Assets/Sprites/UI/quit_fins.png" id="18_msfb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xcuk"]
+font_size = 30
+font_color = Color(0.3019608, 0.92156863, 0.91764706, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imqa2"]
+shader = ExtResource("4_vtlkr")
+shader_parameter/key_color1 = Color(0.7647059, 0.7647059, 0.7647059, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs073"]
+atlas = ExtResource("5_v8l4f")
+region = Rect2(0, 1, 22, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcrev"]
+atlas = ExtResource("5_v8l4f")
+region = Rect2(0, 55, 22, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppt0p"]
+atlas = ExtResource("5_v8l4f")
+region = Rect2(0, 155, 22, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp8ht"]
+atlas = ExtResource("5_v8l4f")
+region = Rect2(0, 203, 24, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mypyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs073")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcrev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppt0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp8ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp8ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppt0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcrev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs073")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cs073"]
+shader = ExtResource("4_vtlkr")
+shader_parameter/key_color1 = Color(0.14117648, 0.13725491, 0.16078432, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgpdm"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(197, 0, 178, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xcuk"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(501, 0, 162, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msfb6"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(804, 0, 166, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi6hd"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(1100, 0, 175, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn3c6"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(1377, 0, 210, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duc32"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(167, 300, 233, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45u3h"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(444, 300, 271, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rejcb"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(745, 300, 263, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cks3u"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(1026, 300, 313, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt6ou"]
+atlas = ExtResource("6_v8l4f")
+region = Rect2(1333, 300, 311, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twdm4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgpdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xcuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msfb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi6hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn3c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duc32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45u3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rejcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cks3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt6ou")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcrev"]
+shader = ExtResource("4_vtlkr")
+shader_parameter/key_color1 = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twdm4"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1yg1"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 251)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e1dr"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn33m"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n85pi"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 254)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe5y2"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 255)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcoec"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ujbj"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 257)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4pdr"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 258)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af3wl"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebw0t"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdthx"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 261)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akqdu"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 262)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v7bd"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 263)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebhus"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 264)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3la2"]
+atlas = ExtResource("7_imqa2")
+region = Rect2(0, 0, 260, 265)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oo6ky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twdm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1yg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e1dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n85pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe5y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcoec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ujbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4pdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebw0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdthx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akqdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v7bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebhus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3la2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3la2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebhus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v7bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akqdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdthx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebw0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4pdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ujbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcoec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe5y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n85pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e1dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1yg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twdm4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 120.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgpdm"]
+texture = ExtResource("10_ppt0p")
+region_rect = Rect2(580.83636, 358.95068, 1642.0889, 914.8048)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8xcuk"]
+texture = ExtResource("11_dp8ht")
+texture_margin_left = 2.593749
+texture_margin_right = 0.2626114
+region_rect = Rect2(977.70276, 481.87885, 818.327, 591.08124)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kldst"]
+
+[sub_resource type="GDScript" id="GDScript_gl6un"]
+script/source = "extends PanelContainer
+
+@export var PrincipalWindows : NodePath
+
+func _on_fermer_pressed() -> void:
+	visible = false
+"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pcrev"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppt0p"]
+font_color = Color(0.9669389, 0.96693903, 0.96693903, 1)
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_0eh1h")
+
+[node name="MapJour" type="Sprite2D" parent="."]
+position = Vector2(574.75, 328.75)
+scale = Vector2(0.4176963, 0.42871094)
+texture = ExtResource("4_msfb6")
+
+[node name="MapNuit" type="Sprite2D" parent="."]
+position = Vector2(575.50006, 329.5)
+scale = Vector2(0.42042154, 0.43164063)
+texture = ExtResource("3_8xcuk")
+
+[node name="NotifNuit" type="ColorRect" parent="."]
+visible = false
+offset_left = -4.0
+offset_top = 120.0
+offset_right = 1160.0
+offset_bottom = 474.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Label" type="Label" parent="NotifNuit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_8xcuk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(-331, -659)
+amount = 600
+texture = ExtResource("3_htr12")
+lifetime = 10.0
+preprocess = 0.3
+speed_scale = 0.5
+fixed_fps = 60
+initial_velocity_min = 178.66
+initial_velocity_max = 1000.0
+scale_amount_min = 0.0
+scale_amount_max = 0.05
+
+[node name="Luigi_reparation_principal" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(569, 395)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame = 7
+frame_progress = 0.98065406
+
+[node name="Luigi_reparation_rech" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(191.00002, 440)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_rech2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(969.00006, 486)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_antenne" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(345, 370)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_infirmerie" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(406, 552)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_restauration" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(685, 524)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_stockage" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(906.99994, 404)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="Luigi_reparation_temps" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_imqa2")
+position = Vector2(787.99994, 404)
+scale = Vector2(1.9166666, 1.8829787)
+sprite_frames = SubResource("SpriteFrames_mypyd")
+frame_progress = 0.12821306
+
+[node name="detruis_principal" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(568, 433.00003)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_rech" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(192, 481)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_rech2" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(967, 528)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_antenne" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(348, 412)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_infirmerie" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(408, 585)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_restauration" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(682, 541)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_stockage" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(910, 436)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="detruis_temps" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cs073")
+position = Vector2(791, 418)
+scale = Vector2(0.64285713, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_twdm4")
+frame = 3
+frame_progress = 0.30528006
+
+[node name="warning_principal" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(567, 425)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_rech" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(194.99997, 471)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_rech_2" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(968, 520)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_antenne" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(347.99997, 402)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_infirmerie" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(404.99997, 583)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_restauration" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(687, 542)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_stockage" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(910, 430)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="warning_temps" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pcrev")
+position = Vector2(792, 408)
+scale = Vector2(0.36538464, 0.3181818)
+sprite_frames = SubResource("SpriteFrames_oo6ky")
+
+[node name="bat_Principal" type="Button" parent="."]
+offset_left = 478.0
+offset_top = 380.0
+offset_right = 685.0
+offset_bottom = 496.0
+
+[node name="bat_rech_pousse" type="Button" parent="."]
+offset_left = 102.99999
+offset_top = 477.99997
+offset_right = 273.0
+offset_bottom = 570.8585
+rotation = -0.43633232
+
+[node name="bat_rech_pousse2" type="Button" parent="."]
+offset_left = 867.99994
+offset_top = 509.99997
+offset_right = 1030.6096
+offset_bottom = 628.6592
+rotation = -0.43633232
+
+[node name="Antenne_market" type="Button" parent="."]
+offset_left = 284.0
+offset_top = 349.0
+offset_right = 408.0
+offset_bottom = 459.0
+
+[node name="bat_infirmerie" type="Button" parent="."]
+offset_left = 361.99997
+offset_top = 530.0
+offset_right = 487.99997
+offset_bottom = 605.7754
+rotation = 0.34906584
+
+[node name="bat_restauration" type="Button" parent="."]
+offset_left = 580.99994
+offset_top = 543.0
+offset_right = 764.39105
+offset_bottom = 639.1766
+rotation = -0.43633232
+
+[node name="bat_stockage" type="Button" parent="."]
+offset_left = 863.0
+offset_top = 403.0
+offset_right = 964.0
+offset_bottom = 471.0
+
+[node name="bat_temps_market" type="Button" parent="."]
+offset_left = 757.0
+offset_top = 306.0
+offset_right = 821.0
+offset_bottom = 475.0
+
+[node name="Passer" type="Button" parent="."]
+offset_left = 1048.0
+offset_top = 534.0
+offset_right = 1147.0
+offset_bottom = 650.0
+icon = ExtResource("4_6athi")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="all" type="Button" parent="."]
+visible = false
+visibility_layer = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 1152.0001
+offset_bottom = 647.99994
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="revenir" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1057.0
+offset_top = -6.0
+offset_right = 1156.0
+offset_bottom = 91.0
+grow_horizontal = 0
+icon = ExtResource("9_imqa2")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Mois2" type="Sprite2D" parent="."]
+position = Vector2(129, 125.125)
+scale = Vector2(0.20785595, 0.16902174)
+texture = ExtResource("10_rgpdm")
+
+[node name="Mois" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 109.0
+offset_right = 212.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mois : 1"
+
+[node name="Argent2" type="Sprite2D" parent="."]
+position = Vector2(130, 56.999996)
+scale = Vector2(0.2056189, 0.17)
+texture = ExtResource("11_8xcuk")
+
+[node name="Argent" type="Label" parent="."]
+offset_left = 86.0
+offset_top = 33.0
+offset_right = 225.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "250000€"
+
+[node name="WinBar" type="ProgressBar" parent="."]
+offset_left = 303.0
+offset_top = 17.0
+offset_right = 1001.0
+offset_bottom = 70.0
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.9799008, 0.9569164, 0.95584303, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxTexture_rgpdm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_8xcuk")
+value = 35.0
+
+[node name="bat_PrincipalWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_PrincipalWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Principal" type="ProgressBar" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_rechWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_rechWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Rech" type="ProgressBar" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_rechWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_rechWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_rech2Windows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_rech2Windows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Rech2" type="ProgressBar" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_rech2Windows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_rech2Windows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_antenneWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_antenneWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Antenne" type="ProgressBar" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="Commander" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Commander"
+
+[node name="fermer" type="Button" parent="bat_antenneWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_infirmerieWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_infirmerieWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Infirmerie" type="ProgressBar" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_restaurationWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_restaurationWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Restauration" type="ProgressBar" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_stockageWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_stockageWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Stockage" type="ProgressBar" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_stockageWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="fermer" type="Button" parent="bat_stockageWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="bat_tempsWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_kldst")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gl6un")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_tempsWindows"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "etat du batiment :"
+
+[node name="etat_bat_Temps" type="ProgressBar" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+value = 70.0
+
+[node name="DonneesCommunes" type="Label" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes disponibles : 00/00"
+
+[node name="Ajouter" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Ajouter"
+
+[node name="pdix_personnes" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+text = "+ 10 personnes"
+
+[node name="Personnes" type="Label" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.4117647, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Personnes : 0"
+
+[node name="mdix_personnes" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+text = "- 10 personnes"
+
+[node name="Retirer" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Retirer"
+
+[node name="delais_commande" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Delais des commandes"
+
+[node name="fermer" type="Button" parent="bat_tempsWindows/VBoxContainer"]
+modulate = Color(0, 0.98039216, 0.98039216, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Sauvegarder et Fermer"
+script = ExtResource("4_2ao20")
+
+[node name="CommandeWindows" type="PanelContainer" parent="."]
+visible = false
+offset_left = 109.0
+offset_top = 98.0
+offset_right = 1017.0
+offset_bottom = 603.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CommandeWindows"]
+layout_mode = 2
+
+[node name="fermer_commande" type="Button" parent="CommandeWindows/VBoxContainer"]
+layout_mode = 2
+text = "Fermer"
+
+[node name="bat_detruitWindows" type="PanelContainer" parent="."]
+visible = false
+offset_left = 110.0
+offset_top = 99.0
+offset_right = 1016.0
+offset_bottom = 604.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="bat_detruitWindows"]
+layout_mode = 2
+
+[node name="nom_detruit" type="Label" parent="bat_detruitWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Batiment (nom)"
+
+[node name="Detruit" type="Label" parent="bat_detruitWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Le batiments est detruit...
+Pour reparer le batiment, il faudra vous rendre dans le batiment
+antenne pour pouvoir acheter des ressources afin de les reparer."
+
+[node name="fermer_detruit" type="Button" parent="bat_detruitWindows/VBoxContainer"]
+layout_mode = 2
+text = "FERMER"
+
+[node name="Menu_pause" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_pcrev")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 131.0
+offset_top = 109.0
+offset_right = 1039.0
+offset_bottom = 613.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_cs073")
+volume_slider = NodePath("VBoxContainer/VolumeSlider")
+volume_label = NodePath("VBoxContainer/VolumeLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu_pause"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Menu_pause/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_ppt0p")
+
+[node name="VolumeSlider" type="HSlider" parent="Menu_pause/VBoxContainer"]
+layout_mode = 2
+
+[node name="Reprendre" type="Button" parent="."]
+visible = false
+offset_left = 275.0
+offset_top = 405.0
+offset_right = 553.0
+offset_bottom = 547.0
+theme_override_colors/font_color = Color(0, 0.8745098, 1, 1)
+icon = ExtResource("17_8xcuk")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quitter" type="Button" parent="."]
+visible = false
+offset_left = 597.0
+offset_top = 394.0
+offset_right = 918.0
+offset_bottom = 546.0
+theme_override_colors/font_color = Color(0.9999257, 0.4695617, 0.40151137, 1)
+icon = ExtResource("18_msfb6")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="delais_commandeWindows" type="PanelContainer" parent="."]
+visible = false
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 602.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="delais_commandeWindows"]
+layout_mode = 2
+
+[node name="Temps_attente" type="Label" parent="delais_commandeWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 23
+text = "Temps d'attente :"
+
+[node name="fermer_delais_commande" type="Button" parent="delais_commandeWindows/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Fermer"
+
+[connection signal="pressed" from="bat_Principal" to="." method="_on_bat_principal_pressed"]
+[connection signal="pressed" from="bat_rech_pousse" to="." method="_on_bat_rech_pousse_pressed"]
+[connection signal="pressed" from="bat_rech_pousse2" to="." method="_on_bat_rech_pousse_2_pressed"]
+[connection signal="pressed" from="Antenne_market" to="." method="_on_antenne_market_pressed"]
+[connection signal="pressed" from="bat_infirmerie" to="." method="_on_bat_infirmerie_pressed"]
+[connection signal="pressed" from="bat_restauration" to="." method="_on_bat_restauration_pressed"]
+[connection signal="pressed" from="bat_stockage" to="." method="_on_bat_stockage_pressed"]
+[connection signal="pressed" from="bat_temps_market" to="." method="_on_bat_temps_market_pressed"]
+[connection signal="pressed" from="Passer" to="." method="_on_passer_pressed"]
+[connection signal="pressed" from="all" to="." method="_on_bat_principal_pressed"]
+[connection signal="pressed" from="revenir" to="." method="_on_revenir_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_PrincipalWindows/VBoxContainer/fermer" to="bat_PrincipalWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_rechWindows/VBoxContainer/fermer" to="bat_rechWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_rech2Windows/VBoxContainer/fermer" to="bat_rech2Windows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/Commander" to="." method="_on_commander_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_antenneWindows/VBoxContainer/fermer" to="bat_antenneWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_infirmerieWindows/VBoxContainer/fermer" to="bat_infirmerieWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_restaurationWindows/VBoxContainer/fermer" to="bat_restaurationWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_stockageWindows/VBoxContainer/fermer" to="bat_stockageWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/Ajouter" to="." method="_on_ajouter_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/pdix_personnes" to="." method="_on_pdix_personnes_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/mdix_personnes" to="." method="_on_mdix_personnes_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/Retirer" to="." method="_on_retirer_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/delais_commande" to="." method="_on_delais_commande_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/fermer" to="." method="_on_fermer_pressed"]
+[connection signal="pressed" from="bat_tempsWindows/VBoxContainer/fermer" to="bat_tempsWindows" method="_on_fermer_pressed"]
+[connection signal="pressed" from="CommandeWindows/VBoxContainer/fermer_commande" to="." method="_on_fermer_commande_pressed"]
+[connection signal="pressed" from="bat_detruitWindows/VBoxContainer/fermer_detruit" to="." method="_on_fermer_detruit_pressed"]
+[connection signal="pressed" from="Reprendre" to="." method="_on_reprendre_pressed"]
+[connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]
+[connection signal="visibility_changed" from="Quitter" to="Menu_pause" method="_on_quitter_visibility_changed"]
+[connection signal="pressed" from="delais_commandeWindows/VBoxContainer/fermer_delais_commande" to="." method="_on_fermer_delais_commande_pressed"]

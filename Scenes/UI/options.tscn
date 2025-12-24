@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://hmgt0ak3hbdj"]
+
+[ext_resource type="Script" uid="uid://xot87l1grje6" path="res://Scripts/options.gd" id="1_4tmxy"]
+[ext_resource type="Texture2D" uid="uid://bdulm25s0hdxg" path="res://Assets/Sprites/Backgrounds/Options.jpg" id="2_4tmxy"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_4tmxy")
+
+[node name="Options" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4tmxy")
+
+[node name="Back" type="Button" parent="."]
+offset_left = 37.0
+offset_top = 597.0
+offset_right = 123.0
+offset_bottom = 629.0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b2jcrb45rokxr"]
+
+[ext_resource type="Texture2D" uid="uid://p8j6pw82cjbt" path="res://theme/hslider/Grabber_Normal.png" id="1_em1vm"]
+[ext_resource type="Texture2D" uid="uid://cb4prkll7g1ee" path="res://theme/hslider/Hslider_Track.png" id="2_m5302"]
+[ext_resource type="Texture2D" uid="uid://svubcsfsju4k" path="res://theme/hslider/Hslider_Fill_Left.png" id="2_uxb3c"]
+[ext_resource type="Texture2D" uid="uid://dbq7cybahfl3k" path="res://theme/hslider/Panel.png" id="4_uxb3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxb3c"]
+atlas = ExtResource("1_em1vm")
+region = Rect2(98, 71, 84, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk1jb"]
+atlas = ExtResource("1_em1vm")
+region = Rect2(98, 71, 84, 36)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gk1jb"]
+texture = ExtResource("2_uxb3c")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+region_rect = Rect2(8, 36, 134, 10)
+modulate_color = Color(1, 1, 1, 0.54901963)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wrqng"]
+texture = ExtResource("2_m5302")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+region_rect = Rect2(28, 122, 444, 31)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8grv3"]
+content_margin_left = 125.0
+content_margin_top = 100.0
+content_margin_right = 125.0
+content_margin_bottom = 100.0
+texture = ExtResource("4_uxb3c")
+texture_margin_left = 9.570532
+texture_margin_top = 6.989354
+texture_margin_right = 9.154589
+texture_margin_bottom = 9.605227
+region_rect = Rect2(36, 31, 1250, 713)
+
+[resource]
+HSlider/icons/grabber = SubResource("AtlasTexture_uxb3c")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_gk1jb")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_gk1jb")
+HSlider/styles/slider = SubResource("StyleBoxTexture_wrqng")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_8grv3")

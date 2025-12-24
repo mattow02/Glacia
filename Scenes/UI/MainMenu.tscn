@@ -1,0 +1,155 @@
+[gd_scene load_steps=14 format=3 uid="uid://dosri68swpiyn"]
+
+[ext_resource type="Script" uid="uid://cuveqiydci504" path="res://Scripts/Controllers/MainMenuController.gd" id="1_kl3t2"]
+[ext_resource type="Texture2D" uid="uid://hlpc104jlw16" path="res://Assets/Sprites/Backgrounds/main_background.png" id="2_ynupv"]
+[ext_resource type="Texture2D" uid="uid://cbhhxr7ci5jna" path="res://Assets/Sprites/UI/titre.png" id="3_m48tj"]
+[ext_resource type="Texture2D" uid="uid://cvf3uviyi18nv" path="res://Assets/Sprites/UI/Sprite_btn_Play.png" id="4_dvisc"]
+[ext_resource type="Texture2D" uid="uid://nhs4s1nmh0j2" path="res://Assets/Sprites/UI/Sprite_btn_exit.png" id="5_ab04i"]
+[ext_resource type="Texture2D" uid="uid://brv7gurb7pjkx" path="res://Assets/Sprites/UI/Sprite_SettingsBtn.png" id="6_hys1s"]
+[ext_resource type="Script" uid="uid://c15vhbcnckso5" path="res://Scripts/Views/SettingsView.gd" id="7_fgqbg"]
+[ext_resource type="Texture2D" uid="uid://q3xdtomg16xl" path="res://Assets/Sprites/UI/flocons.PNG" id="8_euk5f"]
+[ext_resource type="Texture2D" uid="uid://c82gywpse2rub" path="res://Assets/Sprites/UI/mode.png" id="9_ab04i"]
+[ext_resource type="Texture2D" uid="uid://dtw8u624qr5to" path="res://Assets/Sprites/UI/bouton_infini.png" id="10_ab04i"]
+[ext_resource type="Texture2D" uid="uid://7s6nmo3g5iqo" path="res://Assets/Sprites/UI/Normal.png" id="10_dvisc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_21xkr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_21xkr"]
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kl3t2")
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+position = Vector2(576.75006, 325.67813)
+scale = Vector2(5.7675004, 4.9124527)
+texture = ExtResource("2_ynupv")
+
+[node name="Titre" type="Sprite2D" parent="."]
+position = Vector2(578, 164)
+texture = ExtResource("3_m48tj")
+
+[node name="Quit" type="Button" parent="."]
+offset_top = 2.0
+offset_right = 1157.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(0.23443863, 0.9999998, 0.9192592, 1)
+flat = true
+expand_icon = true
+
+[node name="Quit2" type="Button" parent="."]
+offset_top = 2.0
+offset_right = 1157.0
+offset_bottom = 652.0
+theme_override_colors/font_color = Color(0.23443863, 0.9999998, 0.9192592, 1)
+flat = true
+expand_icon = true
+
+[node name="btnPlay" type="TextureButton" parent="."]
+offset_left = 327.0
+offset_top = 305.0
+offset_right = 827.0
+offset_bottom = 434.0
+texture_normal = ExtResource("4_dvisc")
+
+[node name="btnExit" type="TextureButton" parent="."]
+offset_left = 328.0
+offset_top = 456.0
+offset_right = 828.0
+offset_bottom = 579.0
+texture_normal = ExtResource("5_ab04i")
+
+[node name="btnSettings" type="TextureButton" parent="."]
+offset_left = 1045.0
+offset_top = 4.0
+offset_right = 1145.0
+offset_bottom = 104.0
+texture_normal = ExtResource("6_hys1s")
+
+[node name="SettingsWindows" type="PanelContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_21xkr")
+custom_minimum_size = Vector2(800, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = 99.0
+offset_right = 1017.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_fgqbg")
+volume_slider = NodePath("VBoxContainer/VolumeSlider")
+volume_label = NodePath("VBoxContainer/VolumeLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindows"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="SettingsWindows/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_21xkr")
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsWindows/VBoxContainer"]
+layout_mode = 2
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-336, -1089)
+amount = 400
+texture = ExtResource("8_euk5f")
+lifetime = 10.0
+preprocess = 0.5
+speed_scale = 0.2
+fixed_fps = 60
+initial_velocity_min = 178.66
+initial_velocity_max = 1000.0
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+
+[node name="GameMode" type="PanelContainer" parent="."]
+visible = false
+offset_left = 220.0
+offset_top = 255.0
+offset_right = 943.0
+offset_bottom = 610.0
+
+[node name="Mode" type="Sprite2D" parent="GameMode"]
+position = Vector2(366, 107)
+texture = ExtResource("9_ab04i")
+
+[node name="Normal" type="Button" parent="."]
+visible = false
+offset_left = 309.0
+offset_top = 440.0
+offset_right = 1503.9999
+offset_bottom = 914.9999
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("10_dvisc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Infini" type="Button" parent="."]
+visible = false
+offset_left = 606.0
+offset_top = 442.0
+offset_right = 1835.9999
+offset_bottom = 907.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("10_ab04i")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Quit2" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Quit2" to="." method="_on_quit_2_pressed"]
+[connection signal="pressed" from="btnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="btnSettings" to="." method="_on_btn_settings_pressed"]
+[connection signal="pressed" from="Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Infini" to="." method="_on_infini_pressed"]

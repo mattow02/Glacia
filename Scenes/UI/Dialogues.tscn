@@ -1,0 +1,443 @@
+[gd_scene load_steps=27 format=3 uid="uid://dp50bbhmm8cr1"]
+
+[ext_resource type="Texture2D" uid="uid://dgkrojwqs5egn" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="1_x0je1"]
+[ext_resource type="Shader" uid="uid://c4nffjp86nq0v" path="res://Assets/Sprites/dialogues.gdshader" id="2_17r0m"]
+[ext_resource type="Texture2D" uid="uid://draabrdxu6hpi" path="res://Assets/Sprites/UI/neige_sol.jpg" id="3_g7vqu"]
+[ext_resource type="Shader" uid="uid://i6rrf626yf5l" path="res://Assets/Shaders/dialogues_Background.gdshader" id="3_gp4mg"]
+[ext_resource type="Texture2D" uid="uid://dgeqc05bd6ord" path="res://Assets/Sprites/UI/manchot.png" id="6_gp4mg"]
+[ext_resource type="Texture2D" uid="uid://bgdx444f3t0sv" path="res://Assets/Sprites/UI/Dialogue_Play.png" id="8_ihtew"]
+[ext_resource type="Texture2D" uid="uid://ckgiiopsxb3l7" path="res://Assets/Sprites/UI/fond_texte_blanc.png" id="8_r3w36"]
+[ext_resource type="Texture2D" uid="uid://di8lej7hkhpxv" path="res://Assets/Sprites/UI/SKIP.png" id="9_mn5k6"]
+
+[sub_resource type="GDScript" id="GDScript_yfpkt"]
+script/source = "extends Node2D
+
+# --- Références aux objets de la scène (les nœuds) ---
+@onready var neigesol = $CanvasLayer/NeigeSol       # Le sol enneigé
+@onready var manchot = $CanvasLayer/manchot          # Le sprite animé du manchot
+@onready var btn_fleche_before: Button = $CanvasLayer/btn_fleche_before
+@onready var btn_next = $CanvasLayer/btn_fleche_next     # Bouton invisible flèche droite
+@onready var dialogue_label = $CanvasLayer/Text      # Label où s'affiche le texte
+@onready var terminer = $CanvasLayer/Terminer        # Bouton \"Terminer\" à la fin
+@onready var Skip = $CanvasLayer/Button              # Bouton \"SKIP\" pour passer l'intro
+@onready var fond_texte_blanc: Sprite2D = $CanvasLayer/FondTexteBlanc
+@onready var map_final: Sprite2D =   $MapJour      # L'image de fond floue (shader)
+
+# Variable pour savoir quel texte afficher (commence à 1)
+var current_index = 1 
+
+
+func _ready():
+	Engine.max_fps = 60 # Bloque le jeu à 60 images par seconde
+	
+	# --- On cache tout au début de l'intro ---
+	
+	
+	dialogue_label.visible = false
+	terminer.visible = false
+	fond_texte_blanc.visible = false
+
+	# --- Gestion du Shader (le flou) ---
+	var mat = map_final.material as ShaderMaterial # Récupère le matériau du fond
+	mat.set_shader_parameter(\"radius\", 0.0)        # Commence sans flou
+
+	# Animation du flou (Tween) : passe de 0 à 10 en 1 seconde
+	var tween = create_tween()
+	tween.tween_property(mat, \"shader_parameter/radius\", 10.0, 1.0)
+
+	# --- Animation de la neige qui monte ---
+	neigesol.position = Vector2(575, 800) # Place la neige en bas de l'écran
+	var tween2 = create_tween()
+	tween2.tween_property(neigesol, \"position\", Vector2(575, 379), 1.5) # La fait remonter en 1.5s
+
+	# --- Séquence d'animation du manchot ---
+	manchot.play(\"nager\")                   # Joue l'anim \"nager\"
+	await get_tree().create_timer(6).timeout # Attend 6 secondes
+	manchot.play(\"marche\")                  # Joue l'anim \"marche\"
+	await get_tree().create_timer(2).timeout # Attend 2 secondes
+
+	# Arrête le manchot sur l'image fixe \"Dialogues\"
+	manchot.animation = \"Dialogues\"
+	manchot.stop()
+	manchot.frame = 0 # Met la frame 0 (première expression)
+
+	# --- Fin de l'intro : on affiche l'interface ---
+	
+	dialogue_label.visible = true
+	fond_texte_blanc.visible = true
+
+	# Affiche le texte numéro 1 depuis la classe statique Dialogues
+	dialogue_label.text = Dialogues.text[current_index]
+
+	# Connecte les signaux des boutons (équivalent à faire les liens dans l'éditeur)
+	btn_next.pressed.connect(_on_btn_next_pressed)
+
+
+# --- Fonction quand on appuie sur Flèche Droite (Suivant) ---
+func _on_btn_next_pressed():
+	# Si on n'est pas encore au dernier texte
+	if current_index < Dialogues.text.size():
+		current_index += 1 # On passe au suivant
+		dialogue_label.text = Dialogues.text[current_index] # Met à jour le texte
+		manchot.frame = current_index-1 # Change l'expression du manchot
+		
+		# Affiche la flèche retour car on n'est plus au début
+		
+
+	# Si on est arrivé au dernier texte
+	if current_index == Dialogues.text.size():
+	
+		terminer.visible = true       # Affiche le bouton FINIR
+
+
+
+func _on_btn_fleche_before_pressed() -> void:
+	# Si on n'est pas encore au dernier texte
+	if current_index != 1:
+		current_index -= 1 # On passe au suivant
+		dialogue_label.text = Dialogues.text[current_index] # Met à jour le texte
+		manchot.frame = current_index-1 # Change l'expression du manchot
+		
+		# Affiche la flèche retour car on n'est plus au début
+
+
+
+# --- Gestion des touches Clavier (Flèches gauche/droite) ---
+func _input(event):
+	if event.is_action_pressed(\"ui_right\"):
+		_on_btn_next_pressed() # Simule un clic sur Next
+
+
+
+
+# --- Bouton \"Revenir\" (Retour au Menu Principal) ---
+func _on_revenir_pressed() -> void:
+	# [CORRECTION] Nouveau chemin vers le menu principal
+	get_tree().change_scene_to_file(\"res://Scenes/UI/MainMenu.tscn\")
+
+
+# --- Bouton \"Terminer\" (Lancer le Jeu) ---
+func _on_terminer_pressed() -> void:
+	# Cache toute l'interface
+	dialogue_label.visible = false
+	terminer.visible = false
+	btn_fleche_before.visible = false
+	btn_next.visible = false
+	fond_texte_blanc.visible = false
+	
+	# Lance l'animation de sortie du manchot
+	manchot.play(\"outro\")
+
+	# --- Animations de fin (Tweens) ---
+	# Fait descendre le manchot
+	var tween3 = create_tween()
+	tween3.tween_property(manchot, \"position\", Vector2(180.0, 790.0), 0.5)
+
+	# Fait redescendre la neige
+	var tween2 = create_tween()
+	tween2.tween_property(neigesol, \"position\", Vector2(575, 800), 1.5)
+
+	
+	# Enlève le flou (radius à 0)
+	var mat = map_final.material as ShaderMaterial
+	mat.set_shader_parameter(\"radius\", 10.0)
+	var tween4 = create_tween()
+	tween4.tween_property(mat, \"shader_parameter/radius\", 0.0, 1.0)
+
+	# Attend 1.5 secondes que les anims finissent
+	await get_tree().create_timer(1.5).timeout
+	Skip.visible = false
+	
+	# [CORRECTION] Changement de scène vers le niveau de jeu (GameLevel)
+	get_tree().change_scene_to_file(\"res://Scenes/Levels/GameLevel.tscn\")
+
+
+# --- Bouton \"SKIP\" (Passer directement au jeu) ---
+func _on_button_pressed() -> void:
+	# [CORRECTION] Changement de scène immédiat vers le niveau de jeu
+	get_tree().change_scene_to_file(\"res://Scenes/Levels/GameLevel.tscn\")
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0je1"]
+shader = ExtResource("3_gp4mg")
+shader_parameter/radius = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2qk2"]
+shader = ExtResource("2_17r0m")
+shader_parameter/key_color1 = Color(0.003921569, 0.003921569, 0.003921569, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="Animation" id="Animation_g7vqu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manchot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1229, 572.00006)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manchot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2664528, 1.249925)]
+}
+
+[sub_resource type="Animation" id="Animation_7abj2"]
+resource_name = "manchot"
+length = 8.0
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("manchot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3.14, 3.58, 4.12, 4.81, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1229, 572.00006), Vector2(981.05, 575.705), Vector2(878, 571), Vector2(780, 601), Vector2(638.00006, 570), Vector2(356.00003, 612.00006), Vector2(180.00002, 548)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("manchot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2664528, 1.249925), Vector2(4, 3.949)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gp4mg"]
+_data = {
+&"RESET": SubResource("Animation_g7vqu"),
+&"manchot": SubResource("Animation_7abj2")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2qk2"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(67, 337, 87, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp4mg"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(232, 234, 52, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtk4h"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(0, 337, 66, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7abj2"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(625, 432, 57, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7vqu"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(568, 432, 57, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1xo8"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(390, 833, 106, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56ig0"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(797, 833, 104, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnr8o"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(0, 619, 68, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj4il"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(0, 528, 83, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0k3e"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(70, 619, 83, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f78"]
+atlas = ExtResource("6_gp4mg")
+region = Rect2(156, 702, 96, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in4j7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2qk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp4mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtk4h")
+}],
+"loop": true,
+"name": &"Dialogues",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7abj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7vqu")
+}],
+"loop": true,
+"name": &"marche",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1xo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56ig0")
+}],
+"loop": true,
+"name": &"nager",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnr8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj4il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0k3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f78")
+}],
+"loop": false,
+"name": &"outro",
+"speed": 9.0
+}]
+
+[node name="Dialogues" type="Node2D"]
+script = SubResource("GDScript_yfpkt")
+
+[node name="MapJour" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x0je1")
+position = Vector2(574.5, 325.5)
+scale = Vector2(0.41824126, 0.42122397)
+texture = ExtResource("1_x0je1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NeigeSol" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_y2qk2")
+position = Vector2(575, 378.99994)
+scale = Vector2(1.882353, 1.8517442)
+texture = ExtResource("3_g7vqu")
+
+[node name="FondTexteBlanc" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(582, 250.00003)
+rotation = 1.5707964
+scale = Vector2(0.6197995, 0.7567568)
+texture = ExtResource("8_r3w36")
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -355.0
+offset_top = -230.0
+offset_right = 411.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+
+[node name="btn_fleche_next" type="Button" parent="CanvasLayer"]
+visibility_layer = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -323.0
+offset_right = 572.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="btn_fleche_before" type="Button" parent="CanvasLayer"]
+visibility_layer = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -321.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_gp4mg")
+}
+autoplay = "manchot"
+
+[node name="manchot" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 5
+position = Vector2(1229, 572.00006)
+scale = Vector2(1.2664528, 1.249925)
+sprite_frames = SubResource("SpriteFrames_in4j7")
+animation = &"outro"
+frame = 3
+
+[node name="Terminer" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -108.0
+offset_right = 27.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("8_ihtew")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1046.0
+offset_top = 421.0
+offset_right = 1136.0
+offset_bottom = 488.0
+icon = ExtResource("9_mn5k6")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="CanvasLayer/btn_fleche_before" to="." method="_on_btn_fleche_before_pressed"]
+[connection signal="pressed" from="CanvasLayer/Terminer" to="." method="_on_terminer_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="T3MVC"
+run/main_scene="uid://dosri68swpiyn"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://cbhhxr7ci5jna"
+
+[autoload]
+
+AudioMenu="*res://Assets/Audio/audio_menu.tscn"
+GameData="*res://Scripts/Data/GameData.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Test_2D"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "pink",
+"res://Assets/Audio/": "red",
+"res://Resources/": "yellow",
+"res://Scenes/": "green",
+"res://Scripts/": "orange",
+"res://Scripts/Controllers/": "red",
+"res://Scripts/Data/": "blue",
+"res://Scripts/Models/": "teal",
+"res://Scripts/Views/": "blue",
+"res://theme/": "purple"
+}
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/custom="uid://b2jcrb45rokxr"
+theme/custom_font="uid://cgilgjgaqo801"
