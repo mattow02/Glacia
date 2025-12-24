@@ -23,7 +23,6 @@ En tant qu'administrateur d'une station isolée, vous devez gérer **8 bâtiment
 
 ### 🎓 Objectifs pédagogiques
 Ce projet explore les dynamiques de gestion de crise :
-* **Ressources limitées :** Un budget fini (160 000 €) pour toute la mission.
 * **Anticipation :** Gestion des délais de livraison (5 mois d'attente).
 * **Équilibre systémique :** Interdépendance entre Population ↔ État des bâtiments ↔ Moral.
 
@@ -52,13 +51,13 @@ Votre main d'œuvre est votre ressource la plus précieuse. Le nombre de personn
 | **5 – 9** | ⚠️ **Usure (-5%)** | Le bâtiment s'abîme lentement. |
 | **10 – 14** | ⚖️ **Stabilité** | L'état ne bouge pas. |
 | **15 – 19** | 🔧 **Entretien (+5%)** | Le bâtiment est réparé doucement. |
-| **20 +** | ✅ **Rénovation (+20%)** | Réparation très rapide. |
+| **20 +** | ✅ **Rénovation (+10%)** | Réparation rapide. |
 
 > ⚠️ **Alerte :** Si un bâtiment passe sous **50%** d'état, le moral global chute de **-1%** par tour.
 > ![Bâtiment](Assets/Sprites/README/Batiment.png)
 
 ### 4. Budget & Logistique
-* **Budget Total :** 160 000 €.
+* **Budget Total :** 160 000 € de base + l'argent accumulé par chaque batiments en fonction de ce qu'il génere par mois .
 * **Réparations :** Vous pouvez commander des matériaux pour réparer instantanément un bâtiment détruit.
 * **Délai :** La livraison prend **5 mois**. Il faut anticiper les pannes bien avant qu'elles n'arrivent !
 
@@ -89,7 +88,7 @@ La partie s'arrête immédiatement si le **Moral (Barre de survie)** tombe à **
 Les fichiers se trouvent dans `exports/linux`.
 1. Téléchargez le dossier ou les fichiers (`Glacia_linux.exe.x86_64`, `.pck` et le script `.sh`).
 2. Rendez le script d'installation exécutable et lancez-le :
-   ```bash
+3. ```bash
    chmod +x 'script .sh'
    ./'script .sh'
 
