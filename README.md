@@ -136,8 +136,8 @@ wine Glacia.exe
 ## 👥 Équipe
 
 * **Matteo Stroher** ([@mattow02](https://github.com/mattow02)) : Ressources, UI/UX, Design Graphique.
-* **Halil Bronja** : Développement Godot (Core), Gestion Bâtiments & Moral.
-* **Victor Hatt** : Contribution passée.
+* **Halil Bronja** : ([@Miterra](https://github.com/Miterra)) Développement Godot (Core), Gestion Bâtiments & Moral.
+
 
 ---
 
