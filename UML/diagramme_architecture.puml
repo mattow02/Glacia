@@ -1,0 +1,57 @@
+@startuml Architecture_Glacia
+!theme plain
+
+title Architecture MVC - Glacia
+
+skinparam packageStyle rectangle
+skinparam backgroundColor #F0F0F0
+
+package "MODEL" {
+  class GameModel
+  class BatimentsDB
+}
+
+package "DATA" {
+  class GameData <<Singleton>>
+  class DialoguesData
+}
+
+package "CONTROLLER" {
+  class GameController
+  class MainMenuController
+  class GameOverController
+  class GameWinController
+  class DialoguesScene
+}
+
+package "VIEW" {
+  class SettingsView
+  class "Scènes UI" as Scenes
+}
+
+GameController --> GameModel : "utilise"
+GameController --> GameData : "lit/écrit"
+GameModel --> BatimentsDB : "données\npar défaut"
+GameOverController --> GameData : "lit stats"
+GameWinController --> GameData : "lit stats"
+MainMenuController --> GameData : "configure\nmode_infini"
+MainMenuController --> SettingsView : "ouvre"
+DialoguesScene --> DialoguesData : "utilise"
+GameController --> Scenes : "gère"
+MainMenuController --> Scenes : "navigue"
+
+note bottom of GameModel
+  **Cœur du système**
+  - Logique métier
+  - État du jeu
+  - Calculs automatiques
+end note
+
+note right of GameController
+  **Coordination**
+  - Interface utilisateur
+  - Interactions joueur
+  - Mise à jour visuelle
+end note
+
+@enduml

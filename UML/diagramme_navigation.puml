@@ -1,0 +1,43 @@
+@startuml Navigation_Glacia
+!theme plain
+
+title Diagramme de Navigation - Glacia
+
+skinparam componentStyle rectangle
+skinparam backgroundColor #E8E8E8
+
+package "Scènes UI" {
+  [MainMenu] as MainMenu
+  [Dialogues] as Dialogues
+  [GameLevel] as GameLevel
+  [GameOver] as GameOver
+  [GameWin] as GameWin
+  [Options] as Options
+}
+
+MainMenu --> Dialogues : "Jouer"
+Dialogues --> GameLevel : "Commencer"
+GameLevel --> GameOver : "Barre survie = 0"
+GameLevel --> GameWin : "Tour > 24 (mode normal)"
+GameOver --> MainMenu : "Retour menu"
+GameOver --> GameLevel : "Rejouer"
+GameWin --> MainMenu : "Retour menu"
+GameWin --> GameLevel : "Rejouer"
+GameLevel --> MainMenu : "Menu pause"
+MainMenu --> Options : "Paramètres"
+
+note right of GameLevel
+  Scène principale du jeu
+  - Gestion des bâtiments
+  - Gestion du personnel
+  - Système de réparations
+  - Cycle jour/nuit
+end note
+
+note right of Dialogues
+  Introduction au jeu
+  - 3 dialogues d'explication
+  - Animation de transition
+end note
+
+@enduml
