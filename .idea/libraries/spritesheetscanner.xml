@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spritesheetscanner">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Assets/Sprites/spritesheetscanner.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

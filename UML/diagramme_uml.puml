@@ -1,98 +1,121 @@
 @startuml Structure_Glacia
 !theme plain
 skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
 
-' === MODÈLES ===
-class GameModel {
-  - argent : int
-  - argent_depense : int
-  - pers_totales : int
-  - pers_dispo : int
-  - tour_actuel : int
-  - moisJour : int
-  - moisNuit : int
-  - is_night_mode : bool
-  - barre_survie : float
-  - argent_genere_ce_tour : int
-  - batiments_data : Dictionary
-  --
-  + passer_tour() : int
-  + gerer_jour_nuit()
-  + passer_en_mode_nuit()
-  + passer_en_mode_jour()
-  + reset_personnel_batiments()
-  + recuperer_stats_finales() : Dictionary
+title Diagramme de Classes - Glacia (Architecture MVC)
+
+' === PACKAGE MODEL ===
+package "MODEL" {
+  class GameModel {
+    - argent : int
+    - argent_depense : int
+    - pers_totales : int
+    - pers_dispo : int
+    - tour_actuel : int
+    - moisJour : int
+    - moisNuit : int
+    - is_night_mode : bool
+    - barre_survie : float
+    - argent_genere_ce_tour : int
+    - batiments_data : Dictionary
+    --
+    + passer_tour() : int
+    + gerer_jour_nuit()
+    + passer_en_mode_nuit()
+    + passer_en_mode_jour()
+    + reset_personnel_batiments()
+    + recuperer_stats_finales() : Dictionary
+  }
+
+  class BatimentsDB {
+    {static} + get_default_data() : Dictionary
+  }
+
+  class GameData <<Singleton>> {
+    + mode_infini : bool
+    + stats_fin_de_partie : Dictionary
+  }
+
+  class DialoguesData {
+    {static} + text : Dictionary
+  }
 }
 
-class BatimentsDB {
-  {static} + get_default_data() : Dictionary
+' === PACKAGE CONTROLLER ===
+package "CONTROLLER" {
+  class GameController {
+    - game_model : GameModel
+    - current_bat_ui_key : String
+    - batiments_ui : Dictionary
+    --
+    + _ready()
+    + passer_tour()
+    + update_global_ui()
+    + update_animations_batiments()
+    + open_batiment(key : String)
+    + _on_ajouter_pressed()
+    + _on_retirer_pressed()
+    + _reparer_batiment(key : String, bouton : Button)
+    + _change_to_game_over()
+    + _change_to_game_win()
+  }
+
+  class MainMenuController {
+    + _on_btn_play_pressed()
+    + _on_btn_settings_pressed()
+    + _on_normal_pressed()
+    + _on_infini_pressed()
+    + _on_btn_exit_pressed()
+  }
+
+  class GameOverController {
+    + _ready()
+    + afficher_resultats()
+    + _on_restart_pressed()
+    + _on_quit_pressed()
+  }
+
+  class GameWinController {
+    + _ready()
+    + afficher_resultats()
+    + jouer_video_avec_delai_son()
+    + _on_restart_pressed()
+    + _on_quit_pressed()
+  }
 }
 
-' === DONNÉES ===
-class GameData {
-  + mode_infini : bool
-  + stats_fin_de_partie : Dictionary
-}
+' === PACKAGE VIEW ===
+package "VIEW" {
+  class SettingsView {
+    + _ready()
+    + _on_volume_changed(value)
+    + _on_close_pressed()
+  }
 
-class DialoguesData {
-  {static} + text : Dictionary
-}
+  class MainMenu <<Scene>> {
+  }
 
-' === CONTRÔLEURS ===
-class GameController {
-  - game_model : GameModel
-  - current_bat_ui_key : String
-  - batiments_ui : Dictionary
-  --
-  + _ready()
-  + passer_tour()
-  + update_global_ui()
-  + update_animations_batiments()
-  + open_batiment(key : String)
-  + _on_ajouter_pressed()
-  + _on_retirer_pressed()
-  + _reparer_batiment(key : String, bouton : Button)
-  + _change_to_game_over()
-  + _change_to_game_win()
-}
+  class Dialogues <<Scene>> {
+    - current_index : int
+    --
+    + _ready()
+    + _on_btn_next_pressed()
+    + _on_btn_fleche_before_pressed()
+    + _on_terminer_pressed()
+  }
 
-class MainMenuController {
-  + _on_btn_play_pressed()
-  + _on_btn_settings_pressed()
-  + _on_normal_pressed()
-  + _on_infini_pressed()
-  + _on_btn_exit_pressed()
-}
+  class GameLevel <<Scene>> {
+  }
 
-class DialoguesScene {
-  - current_index : int
-  --
-  + _ready()
-  + _on_btn_next_pressed()
-  + _on_btn_fleche_before_pressed()
-  + _on_terminer_pressed()
-}
+  class GameOver <<Scene>> {
+  }
 
-class GameOverController {
-  + _ready()
-  + afficher_resultats()
-  + _on_restart_pressed()
-  + _on_quit_pressed()
-}
+  class GameWin <<Scene>> {
+  }
 
-class GameWinController {
-  + _ready()
-  + afficher_resultats()
-  + jouer_video_avec_delai_son()
-  + _on_restart_pressed()
-  + _on_quit_pressed()
-}
-
-' === VUES ===
-class SettingsView {
-  + _ready()
-  + _on_volume_changed(value)
-  + _on_close_pressed()
+  class Options <<Scene>> {
+  }
 }
 
 ' === RELATIONS ===
@@ -103,10 +126,14 @@ GameOverController --> GameData : utilise
 GameWinController --> GameData : utilise
 MainMenuController --> GameData : utilise
 MainMenuController --> SettingsView : ouvre
-DialoguesScene --> DialoguesData : utilise
+MainMenuController --> MainMenu : contrôle
+GameController --> GameLevel : contrôle
+GameOverController --> GameOver : contrôle
+GameWinController --> GameWin : contrôle
+Dialogues --> DialoguesData : utilise
 
 note right of GameModel
-  Gère toute la logique métier :
+  **MODEL** - Gère toute la logique métier :
   - Gestion des tours
   - Cycle jour/nuit
   - Calcul des PV des bâtiments
@@ -115,7 +142,7 @@ note right of GameModel
 end note
 
 note right of GameController
-  Contrôleur principal du jeu :
+  **CONTROLLER** - Contrôleur principal du jeu :
   - Gère l'interface utilisateur
   - Coordonne les interactions
   - Transitions entre scènes
@@ -123,21 +150,45 @@ note right of GameController
 end note
 
 note right of GameData
-  Singleton partagé :
+  **MODEL** - Singleton partagé :
   - Stocke les stats de fin de partie
   - Mode de jeu (normal/infini)
 end note
 
 note left of DialoguesData
-  Données statiques :
+  **MODEL** - Données statiques :
   - Textes d'introduction
   - Utilisé par la scène Dialogues
 end note
 
 note left of SettingsView
-  Composant UI :
+  **VIEW** - Composant UI :
   - Gestion du volume audio
   - Ouvert depuis MainMenu
+end note
+
+note bottom of MainMenu
+  **VIEW** - Scène Godot (.tscn)
+end note
+
+note bottom of GameLevel
+  **VIEW** - Scène Godot (.tscn)
+end note
+
+note bottom of Dialogues
+  **VIEW** - Scène Godot (.tscn)
+end note
+
+note bottom of GameOver
+  **VIEW** - Scène Godot (.tscn)
+end note
+
+note bottom of GameWin
+  **VIEW** - Scène Godot (.tscn)
+end note
+
+note bottom of Options
+  **VIEW** - Scène Godot (.tscn)
 end note
 
 @enduml
