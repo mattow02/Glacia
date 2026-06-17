@@ -683,7 +683,7 @@ offset_right = 212.0
 offset_bottom = 140.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Mois : 1"
+text = "Month: 1"
 
 [node name="Argent2" type="Sprite2D" parent="."]
 position = Vector2(130, 56.999996)
@@ -755,11 +755,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_PrincipalWindows/VBoxContainer"]
 layout_mode = 2
@@ -769,19 +769,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_PrincipalWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_rechWindows" type="PanelContainer" parent="."]
@@ -826,11 +826,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_rechWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_rechWindows/VBoxContainer"]
 layout_mode = 2
@@ -840,19 +840,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_rechWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_rechWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_rechWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_rech2Windows" type="PanelContainer" parent="."]
@@ -897,11 +897,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_rech2Windows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_rech2Windows/VBoxContainer"]
 layout_mode = 2
@@ -911,19 +911,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_rech2Windows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_rech2Windows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_rech2Windows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_antenneWindows" type="PanelContainer" parent="."]
@@ -968,11 +968,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_antenneWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_antenneWindows/VBoxContainer"]
 layout_mode = 2
@@ -982,24 +982,24 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_antenneWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_antenneWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="Commander" type="Button" parent="bat_antenneWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Commander"
+text = "Order Repairs"
 
 [node name="fermer" type="Button" parent="bat_antenneWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_infirmerieWindows" type="PanelContainer" parent="."]
@@ -1044,11 +1044,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_infirmerieWindows/VBoxContainer"]
 layout_mode = 2
@@ -1058,19 +1058,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_infirmerieWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_restaurationWindows" type="PanelContainer" parent="."]
@@ -1115,11 +1115,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_restaurationWindows/VBoxContainer"]
 layout_mode = 2
@@ -1129,19 +1129,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_restaurationWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_stockageWindows" type="PanelContainer" parent="."]
@@ -1186,11 +1186,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_stockageWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_stockageWindows/VBoxContainer"]
 layout_mode = 2
@@ -1200,19 +1200,19 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_stockageWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_stockageWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="fermer" type="Button" parent="bat_stockageWindows/VBoxContainer"]
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="bat_tempsWindows" type="PanelContainer" parent="."]
@@ -1257,11 +1257,11 @@ text = "Personnes disponibles : 00/00"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3529412, 0.8784314, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Ajouter"
+text = "Add"
 
 [node name="pdix_personnes" type="Button" parent="bat_tempsWindows/VBoxContainer"]
 layout_mode = 2
-text = "+ 10 personnes"
+text = "+ 10 crew"
 
 [node name="Personnes" type="Label" parent="bat_tempsWindows/VBoxContainer"]
 layout_mode = 2
@@ -1271,13 +1271,13 @@ text = "Personnes : 0"
 
 [node name="mdix_personnes" type="Button" parent="bat_tempsWindows/VBoxContainer"]
 layout_mode = 2
-text = "- 10 personnes"
+text = "- 10 crew"
 
 [node name="Retirer" type="Button" parent="bat_tempsWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96608514, 0.1482785, 0, 1)
 theme_override_font_sizes/font_size = 23
-text = "Retirer"
+text = "Remove"
 
 [node name="delais_commande" type="Button" parent="bat_tempsWindows/VBoxContainer"]
 layout_mode = 2
@@ -1288,7 +1288,7 @@ text = "Delais des commandes"
 modulate = Color(0, 0.98039216, 0.98039216, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Sauvegarder et Fermer"
+text = "Save & Close"
 script = ExtResource("4_2ao20")
 
 [node name="CommandeWindows" type="PanelContainer" parent="."]
@@ -1303,7 +1303,7 @@ layout_mode = 2
 
 [node name="fermer_commande" type="Button" parent="CommandeWindows/VBoxContainer"]
 layout_mode = 2
-text = "Fermer"
+text = "Close"
 
 [node name="bat_detruitWindows" type="PanelContainer" parent="."]
 visible = false
@@ -1406,7 +1406,7 @@ text = "Temps d'attente :"
 [node name="fermer_delais_commande" type="Button" parent="delais_commandeWindows/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Fermer"
+text = "Close"
 
 [connection signal="pressed" from="bat_Principal" to="." method="_on_bat_principal_pressed"]
 [connection signal="pressed" from="bat_rech_pousse" to="." method="_on_bat_rech_pousse_pressed"]

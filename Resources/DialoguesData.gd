@@ -2,9 +2,9 @@ class_name Dialogues
 extends Node
 
 static var text := {
-	1: "Bienvenue a la station Glacia ! Les chercheurs estiment qu'il leur faudra exactement 2 ans, soit 24 mois, pour accomplir leur mission scientifique. Votre objectif est clair : maintenir la station en vie et empecher la barre de survie d'atteindre 0 % jusqu'a la fin du 24eme mois.",
+	1: "Welcome to Glacia Station! The research team estimates they need exactly 2 years — 24 months — to complete their scientific mission. Your objective is clear: keep the station alive and prevent the survival bar from reaching 0% until the end of month 24.",
 
-	2: "Attention aux cycles saisonniers. Pendant les 6 mois de Nuit Polaire, les conditions sont extremes : il ne restera que 10 personnes actives dans la station ! Il sera impossible de tout maintenir en parfait etat. Il faudra faire des choix cruciaux pour survivre jusqu'au retour du soleil.",
+	2: "Watch out for seasonal cycles. During the 6 months of Polar Night, conditions are extreme: only 10 crew members will remain active! It will be impossible to maintain everything in perfect shape. You will need to make tough choices to survive until the sun returns.",
 
-	3: "La gestion du personnel est precise : Moins de 5 personnes = DANGER (-10%). De 5 a 9 = Usure lente (-5%). De 10 a 14 = Etat stable. De 15 a 19 = Entretien actif (+5%). Et a partir de 20 personnes = Reparation rapide (+20%). ATTENTION : Gardez l'ANTENNE fonctionnelle a tout prix ! Sans elle, impossible de commander les pieces pour reparer les autres batiments. Bonne chance !"
+	3: "Crew management matters: Less than 5 crew = CRITICAL (-8%). 5 to 9 = Slow decay (-3%). 10 to 14 = Stable. 15 to 19 = Active maintenance (+4%). 20 or more = Fast repair (+8%). WARNING: Keep the COMMUNICATIONS tower operational at all costs! Without it, you cannot order parts to repair other buildings. Good luck!"
 }
