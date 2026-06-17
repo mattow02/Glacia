@@ -118,8 +118,8 @@ func _ready() -> void:
 	update_global_ui()
 	_update_all_labels()
 	
-	print("--- DÉBUT DU JEU ---")
-	print("Mode Jour : moisJour = " + str(game_model.moisJour))
+	print("--- GAME START ---")
+	print("Day mode: dayMonth = " + str(game_model.moisJour))
 
 # Enregistre les éléments UI/animations d'un bâtiment et initialise ses libellés
 func setup_batiment_ui(key: String, button, panel, bar, label_pers, label_comm, label_nom, anim_repar, anim_detruit, anim_warning):
@@ -137,9 +137,9 @@ func setup_batiment_ui(key: String, button, panel, bar, label_pers, label_comm, 
 	
 	var data = game_model.batiments_data[key]
 	var texte_titre = data.nom
-	texte_titre += "\nGain mensuel : " + str(data.gain_argent) + "€"
-	texte_titre += " - Cout reparation : " + str(data.cout) + "€"
-	texte_titre += "\nEtat du batiment :"
+	texte_titre += "\nMonthly income: " + str(data.gain_argent) + "€"
+	texte_titre += " - Repair cost: " + str(data.cout) + "€"
+	texte_titre += "\nBuilding status:"
 	
 	label_nom.text = texte_titre
 	bar.value = data.pv
@@ -204,7 +204,7 @@ func update_global_ui():
 		
 		# [CORRECTION] On remet la condition : Seulement au tout premier mois (0)
 		if game_model.moisNuit == 0:
-			lancer_alerte("ATTENTION : LA NUIT POLAIRE TOMBE !", Color("#4debea"))
+			lancer_alerte("WARNING: POLAR NIGHT IS FALLING!", Color("#4debea"))
 			
 	else:
 		# --- C'EST LE JOUR ---
@@ -213,10 +213,10 @@ func update_global_ui():
 		
 		# [NOUVEAU] On remet la condition : Seulement au tout premier mois (0)
 		if game_model.moisJour == 0:
-			lancer_alerte("LE SOLEIL REVIENT ! HIVER SURVÉCU.", Color.GOLD)
+			lancer_alerte("THE SUN RETURNS! WINTER SURVIVED.", Color.GOLD)
 			
 		if game_model.tour_actuel == 25:
-			lancer_alerte("ALERTE MÉTÉO : BLIZZARD ÉTERNEL DÉTECTÉ !", Color(1, 0, 0))
+			lancer_alerte("WEATHER ALERT: ETERNAL BLIZZARD DETECTED!", Color(1, 0, 0))
 
 
 func lancer_alerte(message: String, couleur_texte: Color = Color("#4debea")):
@@ -252,15 +252,15 @@ func _update_all_labels() -> void:
 		var ui = batiments_ui[key]
 		var data = game_model.batiments_data[key]
 		
-		ui.label_common.text = "Personnes disponibles : " + str(game_model.pers_dispo) + "/" + str(game_model.pers_totales)
-		ui.label_pers.text = "Personnes : " + str(data.pers)
+		ui.label_common.text = "Available crew: " + str(game_model.pers_dispo) + "/" + str(game_model.pers_totales)
+		ui.label_pers.text = "Crew: " + str(data.pers)
 		ui.bar.value = data.pv
 
 # --- LOGIQUE PASSER TOUR ---
 # Avance d'un tour, met à jour UI/animations et gère les fins de partie
 func _on_passer_pressed() -> void:
 	var game_status = game_model.passer_tour()
-	mois.text = "Mois : " + str(game_model.tour_actuel)
+	mois.text = "Month: " + str(game_model.tour_actuel)
 	
 	# Mise à jour des animations
 	update_animations_batiments()
@@ -314,7 +314,7 @@ func open_batiment(key: String) -> void:
 
 # Affiche la fenêtre indiquant qu'un bâtiment est détruit
 func open_destruct_batiment(bat_name: String) -> void:
-	nom_detruit.text = "Batiment " + bat_name
+	nom_detruit.text = "Building " + bat_name
 	bat_detruit_windows.visible = true
 	all.visible = true
 
@@ -369,7 +369,7 @@ func afficher_bouton_reparation(key:String):
 	var data = game_model.batiments_data[key]
 	var bouton = Button.new()
 	bouton.name = btn_name
-	bouton.text = "Reparer " + data.nom + " - " + str(data.cout) + "€"
+	bouton.text = "Repair " + data.nom + " - " + str(data.cout) + "€"
 	bouton.connect("pressed", Callable(self, "_reparer_batiment").bind(key, bouton))
 	commande_vbox.add_child(bouton)
 
@@ -377,7 +377,7 @@ func afficher_bouton_reparation(key:String):
 func _reparer_batiment(key:String, bouton:Button):
 	if key != "antenne":
 		if game_model.batiments_data["antenne"].etat == false:
-			print("IMPOSSIBLE : L'antenne est détruite !")
+			print("IMPOSSIBLE: Communications tower is destroyed!")
 			return
 	
 	var data = game_model.batiments_data[key]
@@ -395,7 +395,7 @@ func _reparer_batiment(key:String, bouton:Button):
 		await get_tree().process_frame
 		verifier_etat_commandes()
 	else:
-		print("Pas assez d'argent")
+		print("Not enough funds")
 
 # Ouvre la fenêtre des commandes de réparation
 func _on_commander_pressed() -> void:
@@ -429,7 +429,7 @@ func verifier_etat_commandes():
 		if not label_existe:
 			var label = Label.new()
 			label.name = nom_label
-			label.text = "Aucune reparation a faire pour le moment."
+			label.text = "No repairs needed at the moment."
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			label.add_theme_color_override("font_color", Color.BLACK)
 			label.add_theme_font_size_override("font_size", 30)
@@ -452,7 +452,7 @@ func afficher_delais_reparations():
 		var data = game_model.batiments_data[key]
 		if data.reparation_restante > 0:
 			var label = Label.new()
-			label.text = "- " + data.nom + " : " + str(data.reparation_restante) + " mois restants"
+			label.text = "- " + data.nom + " : " + str(data.reparation_restante) + " months remaining"
 			label.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
 			label.add_theme_font_size_override("font_size", 24)
 			delais_vbox.add_child(label)
