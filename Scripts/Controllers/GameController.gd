@@ -115,11 +115,30 @@ func _ready() -> void:
 	delais_commande_windows.visible = false
 	menu_pause.visible = false
 
+	# Apply ice theme to all panels
+	for key in batiments_ui:
+		_apply_ice_panel(batiments_ui[key].panel)
+	_apply_ice_panel(commande_windows)
+	_apply_ice_panel(bat_detruit_windows)
+	_apply_ice_panel(delais_commande_windows)
+	_apply_ice_panel(menu_pause)
+
 	update_global_ui()
 	_update_all_labels()
-	
+
 	print("--- GAME START ---")
 	print("Day mode: dayMonth = " + str(game_model.moisJour))
+
+func _apply_ice_panel(panel: PanelContainer) -> void:
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.04, 0.07, 0.14, 0.92)
+	style.border_color = Color(0.25, 0.5, 0.75, 0.3)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(10)
+	style.shadow_color = Color(0.08, 0.15, 0.3, 0.2)
+	style.shadow_size = 5
+	style.set_content_margin_all(14)
+	panel.add_theme_stylebox_override("panel", style)
 
 # Enregistre les éléments UI/animations d'un bâtiment et initialise ses libellés
 func setup_batiment_ui(key: String, button, panel, bar, label_pers, label_comm, label_nom, anim_repar, anim_detruit, anim_warning):

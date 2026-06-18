@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfhs48umcfx41"]
 
-[ext_resource type="Script" uid="uid://bus46kgag16sl" path="res://Scripts/Controllers/GameOverController.gd" id="1_yxx3c"]
-[ext_resource type="Texture2D" uid="uid://dgkrojwqs5egn" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="2_bnh5c"]
-[ext_resource type="Shader" uid="uid://birixytw2cib0" path="res://Assets/Shaders/GameWin.gdshader" id="3_bnh5c"]
-[ext_resource type="Texture2D" uid="uid://ckgiiopsxb3l7" path="res://Assets/Sprites/UI/fond_texte_blanc.png" id="3_ielvo"]
-[ext_resource type="Texture2D" uid="uid://5g3gslitkgb2" path="res://Assets/Sprites/UI/Restart.png" id="5_cf87c"]
-[ext_resource type="Texture2D" uid="uid://vgebmsy4xhbh" path="res://Assets/Sprites/UI/quit_fins.png" id="6_7n8ck"]
-[ext_resource type="Texture2D" uid="uid://7y4fca5ggr0j" path="res://Assets/Sprites/UI/GameOver.png" id="7_3gbkx"]
-[ext_resource type="AudioStream" uid="uid://c5qpfeeu7f4ni" path="res://Assets/Audio/Lose.mp3" id="8_7n8ck"]
+[ext_resource type="Script" path="res://Scripts/Controllers/GameOverController.gd" id="1_yxx3c"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="2_bnh5c"]
+[ext_resource type="Shader" path="res://Assets/Shaders/GameWin.gdshader" id="3_bnh5c"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/fond_texte_blanc.png" id="3_ielvo"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/Restart.png" id="5_cf87c"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/quit_fins.png" id="6_7n8ck"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/GameOver.png" id="7_3gbkx"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/Lose.mp3" id="8_7n8ck"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cf87c"]
 shader = ExtResource("3_bnh5c")

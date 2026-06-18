@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://dp50bbhmm8cr1"]
 
-[ext_resource type="Texture2D" uid="uid://dgkrojwqs5egn" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="1_x0je1"]
-[ext_resource type="Shader" uid="uid://c4nffjp86nq0v" path="res://Assets/Sprites/dialogues.gdshader" id="2_17r0m"]
-[ext_resource type="Texture2D" uid="uid://draabrdxu6hpi" path="res://Assets/Sprites/UI/neige_sol.jpg" id="3_g7vqu"]
-[ext_resource type="Shader" uid="uid://i6rrf626yf5l" path="res://Assets/Shaders/dialogues_Background.gdshader" id="3_gp4mg"]
-[ext_resource type="Texture2D" uid="uid://dgeqc05bd6ord" path="res://Assets/Sprites/UI/manchot.png" id="6_gp4mg"]
-[ext_resource type="Texture2D" uid="uid://bgdx444f3t0sv" path="res://Assets/Sprites/UI/Dialogue_Play.png" id="8_ihtew"]
-[ext_resource type="Texture2D" uid="uid://ckgiiopsxb3l7" path="res://Assets/Sprites/UI/fond_texte_blanc.png" id="8_r3w36"]
-[ext_resource type="Texture2D" uid="uid://di8lej7hkhpxv" path="res://Assets/Sprites/UI/SKIP.png" id="9_mn5k6"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Buildings/Map_Jour.png" id="1_x0je1"]
+[ext_resource type="Shader" path="res://Assets/Sprites/dialogues.gdshader" id="2_17r0m"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/neige_sol.jpg" id="3_g7vqu"]
+[ext_resource type="Shader" path="res://Assets/Shaders/dialogues_Background.gdshader" id="3_gp4mg"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/manchot.png" id="6_gp4mg"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/Dialogue_Play.png" id="8_ihtew"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/fond_texte_blanc.png" id="8_r3w36"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/UI/SKIP.png" id="9_mn5k6"]
 
 [sub_resource type="GDScript" id="GDScript_yfpkt"]
 script/source = "extends Node2D
