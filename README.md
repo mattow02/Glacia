@@ -5,7 +5,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Playable-green?style=for-the-badge)
 
-A survival and management game set in Antarctica. You run an isolated research station — manage 8 buildings, keep your crew's morale up, and survive the polar night.
+A survival and management game set in Antarctica. You run an isolated research station, manage 8 buildings, keep your crew's morale up, and survive the polar night.
 
 <p align="center">
   <a href="https://miterra.itch.io/glacia">
@@ -21,8 +21,8 @@ A survival and management game set in Antarctica. You run an isolated research s
 
 ![Modes](Assets/Sprites/README/Mode.png)
 
-- **Normal** — survive 24 months with positive morale to win.
-- **Infinite** — score attack, survive as long as you can.
+- **Normal**, survive 24 months with positive morale to win.
+- **Infinite**, score attack, survive as long as you can.
 
 ### Day / night cycle
 
@@ -48,7 +48,7 @@ If any building drops below 50%, global morale takes a -1% hit per turn.
 ### Budget and logistics
 
 - Base budget of €160,000 plus monthly income from active buildings.
-- Order repair materials for destroyed buildings — delivery takes 5 months, so plan ahead.
+- Order repair materials for destroyed buildings, delivery takes 5 months, so plan ahead.
 
 ![Repair](Assets/Sprites/README/reparation.png)
 
@@ -87,7 +87,7 @@ chmod +x 'script .sh'
 
 - **Engine:** Godot 4.5 (GDScript)
 - **Art:** Pixel art / clinical dashboard aesthetic
-- **Music:** Toby Fox (Undertale) — used for non-commercial/educational purposes only
+- **Music:** Toby Fox (Undertale), used for non-commercial/educational purposes only
 
 ---
 
