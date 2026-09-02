@@ -15,6 +15,10 @@ A survival and management game set in Antarctica. You run an isolated research s
 
 ---
 
+> **Coursework.** Project of the BUT Informatique at IUT Robert Schuman,
+> Strasbourg, built over four months in 2026, as a duo with
+> [Miterra](https://miterra.itch.io).
+
 ## Gameplay
 
 ### Game modes
@@ -90,6 +94,11 @@ chmod +x 'script .sh'
 - **Music:** Toby Fox (Undertale), used for non-commercial/educational purposes only
 
 ---
+
+## Credits
+
+Built as a duo with [Miterra](https://miterra.itch.io), for the BUT
+Informatique at IUT Robert Schuman.
 
 ## License
 
