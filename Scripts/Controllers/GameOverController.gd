@@ -15,9 +15,9 @@ func afficher_resultats() -> void:
 		score_label.text = "No game data available."
 		return
 
-	var texte = "GAME OVER — THE STATION HAS FROZEN\n\n"
+	var texte = "GAME OVER : THE STATION HAS FROZEN\n\n"
 	texte += "Final Score: " + str(stats.score_total) + " pts\n"
-	texte += "—————————————\n"
+	texte += "-------------\n"
 	texte += "Months survived: " + str(stats.tours_tenus) + "\n"
 	texte += "Remaining funds: " + str(stats.argent_restant) + " €\n"
 	texte += "Total invested: " + str(stats.argent_depense) + " €\n\n"

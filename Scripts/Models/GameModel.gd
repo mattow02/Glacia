@@ -58,7 +58,7 @@ func passer_tour() -> int:
 
 	argent += argent_genere_ce_tour
 
-	# Survival bar — weighted by building health
+	# Survival bar : weighted by building health
 	var total_penalty: float = 0.0
 	var total_bonus: float = 0.0
 	for key in batiments_data:

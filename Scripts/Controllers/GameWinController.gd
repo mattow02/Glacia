@@ -16,9 +16,9 @@ func afficher_resultats() -> void:
 		score_label.text = "No game data available."
 		return
 
-	var texte = "CONGRATULATIONS — MISSION COMPLETE!\n\n"
+	var texte = "CONGRATULATIONS : MISSION COMPLETE!\n\n"
 	texte += "Final Score: " + str(stats.score_total) + " pts\n"
-	texte += "—————————————\n"
+	texte += "-------------\n"
 	texte += "Remaining funds: " + str(stats.argent_restant) + " €\n"
 	texte += "Total invested: " + str(stats.argent_depense) + " €\n\n"
 
@@ -34,7 +34,7 @@ func afficher_resultats() -> void:
 		for nom_bat in stats.liste_detruits:
 			texte += "  - " + nom_bat + "\n"
 	else:
-		texte += "  None — perfect management!\n"
+		texte += "  None : perfect management!\n"
 
 	score_label.text = texte
 
