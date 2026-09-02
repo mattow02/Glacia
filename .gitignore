@@ -13,3 +13,7 @@ builds/
 # --- Fichiers Système ---
 .DS_Store
 Thumbs.db.DS_Store
+
+# --- IDE ---
+.idea/
+*.iml
